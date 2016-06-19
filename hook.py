@@ -12,6 +12,8 @@ def get_host_authoritative_nameservers(host):
     soa_response = soa_answer.response
     rrset = None
 
+    # If we have an ANSWER, use that, otherwise use the AUTHORITY section (which
+    # will be the nameservers for the parent host)
     if soa_answer.rrset:
         soa_rrset = soa_response.answer[0]
     else:
@@ -40,9 +42,11 @@ def verify_challenge(host, challenge, ns_ip_addresses):
     nameserver_count = len(ns_ip_addresses)
     record_match_count = 0
 
+    # Check that every nameserver IP contains the challenge record
     for ns_ip in ns_ip_addresses:
         # Use the authoritative server as a resolver - this works since we
-        # will only issue queries where the resolver is
+        # will only issue queries where the resolver is the authority (i.e.
+        # recursive queries are not required)
         print("+++ Check auth resolver with IP: " + ns_ip)
         auth_resolver = dns.resolver.Resolver(configure = False)
         auth_resolver.nameservers = [ns_ip]
