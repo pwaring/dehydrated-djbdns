@@ -79,7 +79,7 @@ DEFAULT_TTL = 120
 # Parse command line arguments
 # Use nargs = '?' because not all arguments will be specified each time the
 # hook script is called
-parser = argparse.ArgumentParser()
+parser = argparse.ArgumentParser(prefix_chars='@')
 parser.add_argument("action", nargs = '?', default = '')
 parser.add_argument("domain", nargs = '?', default = '')
 parser.add_argument("token", nargs = '?', default = '')
