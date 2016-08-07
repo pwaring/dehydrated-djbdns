@@ -32,5 +32,9 @@ the domain name passed as a parameter to `letsencrypt.sh` does not exist).
 
 ## Credits
 
-Thanks to David Jones (@drjtwit) for help refactoring the main loop of the
-script to be more Pythonic.
+Thanks to:
+
+ * David Jones (@drjtwit) for help refactoring the main loop of the
+   script to be more Pythonic.
+ * ehuggett for finding and patching an edge-case bug where the ACME challenge
+   starts with a hyphen.
