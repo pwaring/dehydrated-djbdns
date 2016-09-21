@@ -1,6 +1,6 @@
 # dehydrated-djbdns
 
-Hook script for [dehydrated]](https://github.com/lukas2511/dehydrated)
+Hook script for [dehydrated](https://github.com/lukas2511/dehydrated)
 with [djbdns](http://cr.yp.to/djbdns.html).
 
 ## Dependencies
