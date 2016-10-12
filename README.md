@@ -1,7 +1,8 @@
 # dehydrated-djbdns
 
-Hook script for [dehydrated](https://github.com/lukas2511/dehydrated)
-with [djbdns](http://cr.yp.to/djbdns.html).
+Hook script for using [dehydrated](https://github.com/lukas2511/dehydrated)
+to generate [djbdns](http://cr.yp.to/djbdns.html) records which can be used to
+respond to DNS challenges for LetsEncrypt certificate issuance.
 
 ## Dependencies
 
