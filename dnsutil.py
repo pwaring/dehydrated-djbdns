@@ -59,8 +59,7 @@ def verify_challenge(host, challenge, ns_ip_addresses, verbose = False):
 
                 # DNS library quotes returned strings - for comparisons we
                 # need to remove them
-                if dns_text.startswith('"') and dns_text.endswith('"'):
-                    dns_text = dns_text[1:-1]
+                dns_text = dns_text.strip('"')
 
                 if verbose:
                   print("++++ Challenge: " + challenge)
