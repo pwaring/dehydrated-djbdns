@@ -33,7 +33,7 @@ def get_host_ip_addresses(host):
 
     return ip_addresses
 
-def verify_challenge(host, challenge, ns_ip_addresses):
+def verify_challenge(host, challenge, ns_ip_addresses, verbose = False):
     nameserver_count = len(ns_ip_addresses)
     record_match_count = 0
 
@@ -42,11 +42,15 @@ def verify_challenge(host, challenge, ns_ip_addresses):
         # Use the authoritative server as a resolver - this works since we
         # will only issue queries where the resolver is the authority (i.e.
         # recursive queries are not required)
-        print("+++ Check auth resolver with IP: " + ns_ip)
+        if verbose:
+          print("+++ Check auth resolver with IP: " + ns_ip)
+
         auth_resolver = dns.resolver.Resolver(configure = False)
         auth_resolver.nameservers = [ns_ip]
 
-        print("+++ Query for " + host + " TXT record")
+        if verbose:
+          print("+++ Query for " + host + " TXT record")
+
         dns_answer = auth_resolver.query(host, 'TXT')
 
         if dns_answer:
@@ -58,8 +62,9 @@ def verify_challenge(host, challenge, ns_ip_addresses):
                 if dns_text.startswith('"') and dns_text.endswith('"'):
                     dns_text = dns_text[1:-1]
 
-                print("++++ Challenge: " + challenge)
-                print("++++ DNS response: " + dns_text)
+                if verbose:
+                  print("++++ Challenge: " + challenge)
+                  print("++++ DNS response: " + dns_text)
 
                 if dns_text == challenge:
                     record_match_count += 1
