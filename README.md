@@ -35,7 +35,6 @@ the domain name passed as a parameter to `dehydrated` does not exist).
 
 Thanks to:
 
- * David Jones (@drjtwit) for help refactoring the main loop of the
-   script to be more Pythonic.
+ * David Jones (@drjtwit) for help refactoring code to be more Pythonic.
  * ehuggett for finding and patching an edge-case bug where the ACME challenge
-   starts with a hyphen.
+   starts with a hyphen, and providing general thoughts and code.
