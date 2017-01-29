@@ -7,8 +7,8 @@ import dnsutil
 import dns.exception
 import dns.resolver
 
-LOOKUP_SLEEP_SECONDS = 60
-MAX_DNS_ATTEMPTS = 10
+LOOKUP_SLEEP_SECONDS = 20
+MAX_DNS_ATTEMPTS = 15
 DEFAULT_TTL = 120
 
 # Parse command line arguments
